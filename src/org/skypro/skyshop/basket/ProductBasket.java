@@ -38,11 +38,7 @@ public class ProductBasket {
             if (product != null) {
                 hasProduct = true;
 
-                if (product.isSpecial()) {
-                    System.out.println(product);
-                } else {
-                    System.out.println(product);
-                }
+                System.out.println(product);
             }
         }
 
