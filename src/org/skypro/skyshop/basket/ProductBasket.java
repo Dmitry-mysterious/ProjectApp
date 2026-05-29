@@ -36,8 +36,9 @@ public class ProductBasket {
 
         for (Product product : cart) {
             if (product != null) {
-                System.out.println(product.getName() + ": " + product.getPrice());
                 hasProduct = true;
+
+                System.out.println(product);
             }
         }
 
@@ -45,7 +46,21 @@ public class ProductBasket {
             System.out.println("В корзине пусто");
         } else {
             System.out.println("Итого: " + getTotalPrice());
+            System.out.println("Специальных товаров: " + countSpecialProduct());
         }
+    }
+
+    // Метод, который подсчитывает количество специальных товаров
+    public int countSpecialProduct() {
+        int specialProduct = 0;
+
+        for (Product product : cart) {
+            if (product.isSpecial()) {
+                specialProduct++;
+            }
+        }
+
+        return specialProduct;
     }
 
     // Метод, проверяющий продукт в корзине по имени
