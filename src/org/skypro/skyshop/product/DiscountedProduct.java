@@ -5,6 +5,14 @@ public class DiscountedProduct extends Product{
     private final int discount;
 
     public DiscountedProduct(String productName, int basedPrice, int discount) {
+        if (basedPrice <= 0) {
+            throw new IllegalArgumentException("Цена не может быть меньше или равняться нулю.");
+        }
+
+        if (discount > 100 || discount < 0) {
+            throw new IllegalArgumentException("Скидка должна быть в диапазоне от 0 до 100.");
+        }
+
         super(productName);
         this.basedPrice = basedPrice;
         this.discount = discount;
