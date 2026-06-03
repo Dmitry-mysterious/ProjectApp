@@ -27,12 +27,17 @@ public class App {
 
         SearchEngine searchEngine = new SearchEngine(10);
 
-        SimpleProduct milk = new SimpleProduct("Молоко", 120);
-        FixPriceProduct cheese = new FixPriceProduct("Сыр");
-        DiscountedProduct bread = new DiscountedProduct("Хлеб", 70, 12);
-        SimpleProduct lemon = new SimpleProduct("Лимон", 40);
-        DiscountedProduct yogurt = new DiscountedProduct("Йогурт", 100, 15);
-        FixPriceProduct juice = new FixPriceProduct("Сок");
+        try {
+            SimpleProduct milk = new SimpleProduct("Молоко", 120);
+            FixPriceProduct cheese = new FixPriceProduct("Сыр");
+            DiscountedProduct bread = new DiscountedProduct("Хлеб", 70, 12);
+            SimpleProduct lemon = new SimpleProduct("Лимон", 40);
+            DiscountedProduct yogurt = new DiscountedProduct("Йогурт", 100, 15);
+            FixPriceProduct juice = new FixPriceProduct("Сок");
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException(e);
+        }
+
 
         Article milkArticle = new Article("Коровье молоко", "молоко собственного производства из коров выращенных на ферме");
 
@@ -45,11 +50,11 @@ public class App {
             throw new RuntimeException(e);
         }
 
-//        try {
-//            System.out.println("searchEngine.findMostRelevant(\"сыр\") = " + searchEngine.findMostRelevant("сыр"));
-//        } catch (BestResultNotFound e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            System.out.println("searchEngine.findMostRelevant(\"сыр\") = " + searchEngine.findMostRelevant("сыр"));
+        } catch (BestResultNotFound e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }
