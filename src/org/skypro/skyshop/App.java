@@ -10,7 +10,6 @@ import org.skypro.skyshop.search.SearchEngine;
 
 import java.util.List;
 
-
 public class App {
     public static void main(String[] args) {
         SimpleProduct milk = new SimpleProduct("Молоко", 120);
