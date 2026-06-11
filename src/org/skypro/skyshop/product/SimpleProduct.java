@@ -4,6 +4,10 @@ public class SimpleProduct extends Product {
     private final int price;
 
     public SimpleProduct(String productName, int price) {
+        if (price <= 0) {
+            throw new IllegalArgumentException("Цена не может быть меньше или равняться нулю.");
+        }
+
         super(productName);
         this.price = price;
     }
