@@ -1,22 +1,21 @@
 package org.skypro.skyshop.basket;
 import org.skypro.skyshop.product.Product;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+
 public class ProductBasket {
-    private Product[] cart;
+    private List<Product> cart;
 
     public ProductBasket() {
-        this.cart = new Product[5];
+        this.cart = new LinkedList<>();
     }
 
-    // Метод добавления продукта в корзину
+    // Метод добавления продукта в корзину --
     public void addInBasket(Product product) {
-        for (int i = 0; i < cart.length; i++) {
-            if (cart[i] == null) {
-                cart[i] = product;
-                return;
-            }
-        }
-        System.out.println("Невозможно добавить продукт");
+        cart.add(product);
     }
 
     // Метод получения общей стоимости корзины
@@ -73,13 +72,20 @@ public class ProductBasket {
         return false;
     }
 
-    // Метод очистки корзины
-    public void clearBasket() {
-        for (int i = 0; i < cart.length; i++) {
-            if (cart[i] != null) {
-                cart[i] = null;
+    // Метод очистки продуктов из корзины по имени
+    public List<Product> deleteProductByName(String name) {
+        List<Product> deletedProducts = new LinkedList<>();
+        Iterator<Product> iterator = cart.iterator();
+
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (Objects.equals(product.getName(), name)) {
+                deletedProducts.add(product);
+                iterator.remove();
             }
         }
+
+        return deletedProducts;
     }
 
 
